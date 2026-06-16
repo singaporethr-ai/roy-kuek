@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roy Kuek — Founder &amp; Business Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0b1c2e;
+      --navy2:  #122240;
+      --gold:   #c9a356;
+      --gold2:  #e8c87a;
+      --cream:  #f5f0e8;
+      --white:  #ffffff;
+      --text:   #1a1a2e;
+      --muted:  #5a6a7a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.75;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(11,28,46,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,163,86,0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/WhatsApp Image 2026-06-09 at 21.41.33.jpeg') center center / cover no-repeat;
+      transform: scale(1.05);
+      animation: heroZoom 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1.12); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(11,28,46,0.72) 0%,
+        rgba(11,28,46,0.45) 50%,
+        rgba(11,28,46,0.65) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.4s forwards;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      max-width: 900px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.7s forwards;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold2);
+    }
+
+    .hero-sub {
+      margin-top: 24px;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.78);
+      letter-spacing: 0.04em;
+      max-width: 560px;
+      opacity: 0;
+      animation: fadeUp 1s ease 1s forwards;
+    }
+
+    .hero-cta {
+      margin-top: 44px;
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+      opacity: 0;
+      animation: fadeUp 1s ease 1.3s forwards;
+    }
+
+    .hero-cta:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .scroll-line {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--gold));
+      animation: scrollPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: translateX(-50%) scaleY(0.6); }
+      50%       { opacity: 1;   transform: translateX(-50%) scaleY(1); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 100px 60px; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+
+    .divider {
+      width: 52px;
+      height: 2px;
+      background: var(--gold);
+      margin: 20px 0 28px;
+    }
+
+    /* ── FOUNDER ── */
+    #founder {
+      background: var(--navy);
+      padding: 100px 60px;
+    }
+
+    .founder-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .founder-img-wrap {
+      position: relative;
+    }
+
+    .founder-img-wrap img {
+      width: 100%;
+      height: 580px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(12%);
+    }
+
+    .founder-img-frame {
+      position: absolute;
+      inset: -14px;
+      border: 1.5px solid rgba(201,163,86,0.35);
+      pointer-events: none;
+    }
+
+    .founder-text .section-label { color: var(--gold); }
+    .founder-text .section-title { color: var(--white); }
+
+    .founder-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--gold2);
+      margin-top: 10px;
+    }
+
+    .founder-role {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+      margin-bottom: 28px;
+    }
+
+    .founder-body {
+      font-size: 1.02rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.9;
+    }
+
+    .founder-body p + p { margin-top: 18px; }
+
+    .founder-quote {
+      margin-top: 36px;
+      padding: 24px 28px;
+      border-left: 3px solid var(--gold);
+      background: rgba(201,163,86,0.07);
+    }
+
+    .founder-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.12rem;
+      color: var(--gold2);
+      line-height: 1.7;
+    }
+
+    /* ── COMPANIES ── */
+    #companies {
+      background: var(--cream);
+      padding: 100px 60px;
+    }
+
+    .companies-header {
+      max-width: 1100px;
+      margin: 0 auto 64px;
+    }
+
+    .companies-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .company-card {
+      background: var(--white);
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(11,28,46,0.09);
+      transition: transform 0.35s, box-shadow 0.35s;
+      border-top: 3px solid var(--gold);
+    }
+
+    .company-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 48px rgba(11,28,46,0.16);
+    }
+
+    .company-img-wrap {
+      background: #0b1c2e;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .company-img-wrap img {
+      width: 100%;
+      height: auto;
+      max-height: 240px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .company-info {
+      padding: 28px 32px 36px;
+    }
+
+    .company-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--navy);
+      padding: 5px 12px;
+      margin-bottom: 14px;
+    }
+
+    .company-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .company-info p {
+      font-size: 1rem;
+      color: #2e3a4a;
+      line-height: 1.88;
+      font-weight: 400;
+    }
+
+    /* ── ANTIQUES ── */
+    #antiques {
+      background: var(--navy2);
+      padding: 100px 60px;
+    }
+
+    .antiques-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .antiques-text .section-label { color: var(--gold); }
+    .antiques-text .section-title { color: var(--white); }
+    .antiques-text .divider { background: var(--gold); }
+
+
+    .antiques-body {
+      font-size: 1.02rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.9;
+    }
+
+    .antiques-body p + p { margin-top: 16px; }
+
+    /* Ken Burns slideshow */
+    .antique-slideshow {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      animation: kenBurns 18s infinite;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-origin: center center;
+    }
+
+    .slide:nth-child(1) { animation-delay: 0s; }
+    .slide:nth-child(2) { animation-delay: 6s; }
+    .slide:nth-child(3) { animation-delay: 12s; }
+
+    @keyframes kenBurns {
+      0%   { opacity: 0; }
+      5%   { opacity: 1; }
+      28%  { opacity: 1; }
+      33%  { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    .slide:nth-child(1) img { animation: kb1 18s infinite; }
+    .slide:nth-child(2) img { animation: kb2 18s 6s infinite; }
+    .slide:nth-child(3) img { animation: kb3 18s 12s infinite; }
+
+    @keyframes kb1 {
+      0%   { transform: scale(1.08) translate(0, 0); }
+      33%  { transform: scale(1.18) translate(-3%, -2%); }
+      100% { transform: scale(1.08) translate(0, 0); }
+    }
+    @keyframes kb2 {
+      0%   { transform: scale(1.1) translate(2%, 1%); }
+      33%  { transform: scale(1.2) translate(-2%, 2%); }
+      100% { transform: scale(1.1) translate(2%, 1%); }
+    }
+    @keyframes kb3 {
+      0%   { transform: scale(1.12) translate(-1%, 0); }
+      33%  { transform: scale(1.06) translate(2%, -1%); }
+      100% { transform: scale(1.12) translate(-1%, 0); }
+    }
+
+    .slide-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 24px 20px;
+      background: linear-gradient(to top, rgba(11,28,46,0.85) 0%, transparent 100%);
+      opacity: 0;
+      animation: kenBurns 18s infinite;
+    }
+
+    .slide-caption p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--gold2);
+      letter-spacing: 0.04em;
+    }
+
+    .slide:nth-child(1) .slide-caption { animation-delay: 0s; }
+    .slide:nth-child(2) .slide-caption { animation-delay: 6s; }
+    .slide:nth-child(3) .slide-caption { animation-delay: 12s; }
+
+    /* ── PHILOSOPHY ── */
+    #philosophy {
+      background: var(--white);
+      padding: 100px 60px;
+      text-align: center;
+    }
+
+    .philosophy-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .philosophy-inner .section-title { margin: 0 auto; }
+
+    .phil-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.5;
+      margin-top: 36px;
+    }
+
+    .phil-quote span { color: var(--gold); }
+
+    .phil-body {
+      margin-top: 28px;
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 56px 60px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(201,163,86,0.3);
+      margin: 28px auto;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 28px; }
+      .nav-links { gap: 20px; }
+      section { padding: 72px 28px; }
+      #founder { padding: 72px 28px; }
+      #companies { padding: 72px 28px; }
+      #antiques { padding: 72px 28px; }
+      #philosophy { padding: 72px 28px; }
+      footer { padding: 48px 28px; }
+
+      .founder-inner,
+      .antiques-inner { grid-template-columns: 1fr; gap: 48px; }
+      .companies-grid { grid-template-columns: 1fr; }
+
+      .founder-img-wrap img { height: 400px; }
+      .antique-slideshow { aspect-ratio: 4/3; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Roy Kuek</a>
+    <ul class="nav-links">
+      <li><a href="#founder">About</a></li>
+      <li><a href="#companies">Ventures</a></li>
+      <li><a href="#antiques">Collection</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Roy Kuek &nbsp;·&nbsp; Founder &amp; Business Leader</p>
+      <h1 class="hero-headline">
+        Beyond the Horizon.<br/>
+        <em>The Sky Was Never the Limit.</em>
+      </h1>
+      <p class="hero-sub">
+        Building enterprises that endure — with patience, purpose, and an unwavering belief in what lies ahead.
+      </p>
+      <a href="#founder" class="hero-cta">Discover More</a>
+    </div>
+    <div class="scroll-line"></div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section id="founder">
+    <div class="founder-inner">
+      <div class="founder-img-wrap reveal">
+        <img src="assets/WhatsApp Image 2026-06-07 at 21.09.02.jpeg" alt="Roy Kuek, Founder" />
+        <div class="founder-img-frame"></div>
+      </div>
+      <div class="founder-text reveal">
+        <p class="section-label">The Man Behind the Vision</p>
+        <h2 class="section-title">Meet the Founder</h2>
+        <div class="divider" style="background:var(--gold);"></div>
+        <p class="founder-name">Roy Kuek</p>
+        <p class="founder-role">Founder &amp; Business Leader</p>
+        <div class="founder-body">
+          <p>With decades of experience across multiple industries, Roy Kuek has built a portfolio of companies grounded in one enduring principle: do things right, and do them with integrity.</p>
+          <p>A calm and deliberate strategist, Roy approaches business the way a craftsman approaches his work — with deep knowledge, steady hands, and a long view. His ventures span petrochemicals, sustainable packaging, and strategic trading across the Asia-Pacific region.</p>
+          <p>Beyond business, Roy is a passionate collector of fine Chinese antiques — an interest that reflects his appreciation for craftsmanship, history, and the value of things built to last.</p>
+        </div>
+        <div class="founder-quote">
+          <p>"True success is not measured in speed, but in the depth of what you build and the trust you earn along the way."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANIES -->
+  <section id="companies">
+    <div class="companies-header reveal">
+      <p class="section-label">Our Ventures</p>
+      <h2 class="section-title">A Portfolio Built on Alliance</h2>
+      <div class="divider"></div>
+      <p style="max-width:580px;color:var(--muted);font-size:1.02rem;line-height:1.85;">
+        Each company under Roy's leadership is built to create long-term value for its partners, clients, and communities — with quality and trust at the core.
+      </p>
+    </div>
+    <div class="companies-grid">
+
+      <div class="company-card reveal">
+        <div class="company-img-wrap">
+          <img src="assets/pac_clean.jpg" alt="PAC Alliance Pte Ltd" />
+        </div>
+        <div class="company-info">
+          <span class="company-tag">Sustainable Packaging</span>
+          <h3>PAC Alliance Pte Ltd</h3>
+          <p>Your plastic packaging solutions partner. PAC Alliance provides custom-made packaging with a sustainable concept and processes — helping businesses reduce waste without compromising quality or performance.</p>
+        </div>
+      </div>
+
+      <div class="company-card reveal">
+        <div class="company-img-wrap">
+          <img src="assets/ga_clean.jpg" alt="Great Alliance Trading Singapore" />
+        </div>
+        <div class="company-info">
+          <span class="company-tag">Petrochemicals</span>
+          <h3>Great Alliance Trading (Singapore) Pte Ltd</h3>
+          <p>A trusted name in petrochemical trade across the region. Specialising in Polyethylene (PE), PET, Polypropylene (PP), and Polystyrene (PS) — supplying quality raw materials that keep industries moving.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GUZHENG AUDIO: muted autoplay always works; we unmute on scroll -->
+  <audio id="guzheng" autoplay muted loop preload="auto">
+    <source src="https://archive.org/download/beautiful-chinese-music-bamboo-flute-guzheng-chinese-instrumental-music-for-learning-sleep/Beautiful%20Chinese%20Music%20Bamboo%20Flute-Guzheng%20Chinese%20Instrumental%20Music%20for%20Learning%20%26%20Sleep.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ANTIQUES -->
+  <section id="antiques">
+    <div class="antiques-inner">
+      <div class="antique-slideshow reveal">
+
+        <div class="slide">
+          <img src="assets/WhatsApp Image 2026-06-07 at 17.52.16.jpeg" alt="Blue and White Dragon Vase" />
+          <div class="slide-caption"><p>Blue &amp; White Dragon Vase — Ming Dynasty Style</p></div>
+        </div>
+
+        <div class="slide">
+          <img src="assets/WhatsApp Image 2026-06-09 at 17.03.58.jpeg" alt="Famille Rose Reticulated Vase" />
+          <div class="slide-caption"><p>Famille Rose Reticulated Vase — Imperial Craftmanship</p></div>
+        </div>
+
+        <div class="slide">
+          <img src="assets/WhatsApp Image 2026-06-09 at 17.03.59.jpeg" alt="Celadon Fish Bowl Vase" />
+          <div class="slide-caption"><p>Celadon Fish Bowl — Qing Dynasty Porcelain</p></div>
+        </div>
+
+      </div>
+
+      <div class="antiques-text reveal">
+        <p class="section-label">The Collector</p>
+        <h2 class="section-title">A Passion for the Timeless</h2>
+        <div class="divider"></div>
+        <div class="antiques-body">
+          <p>Beyond the boardroom, Roy is a devoted collector of fine Chinese antique porcelain — a pursuit that began decades ago and has grown into a carefully curated personal collection of rare and museum-quality pieces.</p>
+          <p>Each piece in his collection carries a story — of dynasties, of craftsmen who devoted a lifetime to perfecting a single glaze, a single form. To Roy, collecting antiques is not merely about ownership. It is about preserving cultural memory and learning from the patience of those who came before us.</p>
+          <p>His collection spans blue and white dragon vases, famille rose reticulated porcelain, and celadon pieces from the Qing era — each chosen with the same quiet discernment he brings to every business decision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section id="philosophy">
+    <div class="philosophy-inner reveal">
+      <p class="section-label">A Way of Doing Business</p>
+      <h2 class="section-title">Guided by Principle</h2>
+      <div class="divider" style="margin:20px auto 0;"></div>
+      <p class="phil-quote">
+        "I have never chased the sky —<br/>
+        <span>I have always known there is something beyond it.</span>"
+      </p>
+      <p class="phil-body">
+        Roy's approach to business is shaped by patience, long-term thinking, and a deep respect for the people he works with. Whether building a company, sourcing a rare antique, or nurturing a partnership, he applies the same steady hand and the same quiet confidence that has defined his journey.
+      </p>
+      <p class="phil-body" style="margin-top:0;">
+        For Roy, the measure of success is not how fast you move — it is how well the things you build stand the test of time.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-logo">Roy Kuek</p>
+    <p class="footer-tagline">Founder &nbsp;·&nbsp; Business Leader &nbsp;·&nbsp; Collector</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">&copy; 2026 Roy Kuek. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Guzheng: audio starts muted (bypasses autoplay block).
+    // Unmutes with fade when antiques section enters view; mutes when leaving.
+    const audio = document.getElementById('guzheng');
+    audio.volume = 0;
+    let fadeInterval = null;
+
+    function fadeTo(targetVol, duration) {
+      clearInterval(fadeInterval);
+      const steps    = 50;
+      const interval = duration / steps;
+      const startVol = audio.volume;
+      const delta    = (targetVol - startVol) / steps;
+      let   step     = 0;
+      fadeInterval = setInterval(() => {
+        step++;
+        audio.volume = Math.min(1, Math.max(0, startVol + delta * step));
+        if (step >= steps) {
+          clearInterval(fadeInterval);
+          if (targetVol === 0) audio.muted = true;
+        }
+      }, interval);
+    }
+
+    const antiquesSection = document.getElementById('antiques');
+    const musicObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          audio.muted = false;
+          fadeTo(0.42, 2000);
+        } else {
+          fadeTo(0, 1500);
+        }
+      });
+    }, { threshold: 0.2 });
+    musicObserver.observe(antiquesSection);
+  </script>
+
+</body>
+</html>
