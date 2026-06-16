@@ -84,14 +84,15 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('assets/WhatsApp Image 2026-06-09 at 21.41.33.jpeg') center center / cover no-repeat;
+      background: url('assets/WhatsApp Image 2026-06-09 at 21.41.33.jpeg') 62% center / cover no-repeat;
       transform: scale(1.05);
       animation: heroZoom 18s ease-in-out infinite alternate;
     }
 
     @keyframes heroZoom {
-      from { transform: scale(1.05); }
-      to   { transform: scale(1.12); }
+      from { transform: scale(1.0); background-position: 62% 45%; }
+      to   { transform: scale(1.04); background-position: 58% 40%; }
+    }
     }
 
     .hero-overlay {
@@ -683,7 +684,7 @@
 
   <!-- GUZHENG AUDIO: muted autoplay always works; we unmute on scroll -->
   <audio id="guzheng" autoplay muted loop preload="auto">
-    <source src="assets/guzheng.mp3" type="audio/mpeg" />
+    <source src="./assets/guzheng.mp3" type="audio/mpeg" />
   </audio>
 
   <!-- ANTIQUES -->
@@ -789,6 +790,7 @@
       entries.forEach(e => {
         if (e.isIntersecting) {
           audio.muted = false;
+          audio.play().catch(() => {});
           fadeTo(0.42, 2000);
         } else {
           fadeTo(0, 1500);
