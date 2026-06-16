@@ -6,7 +6,7 @@
   <title>Roy Kuek — Founder &amp; Business Leader</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,7 +24,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Raleway', sans-serif;
       font-size: 16px;
       color: var(--text);
       background: var(--white);
@@ -47,7 +47,7 @@
     }
 
     .nav-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--gold);
@@ -84,15 +84,15 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('assets/WhatsApp Image 2026-06-09 at 21.41.33.jpeg') 62% center / cover no-repeat;
-      transform: scale(1.05);
-      animation: heroZoom 18s ease-in-out infinite alternate;
+      background: url('assets/WhatsApp Image 2026-06-09 at 21.41.33.jpeg') 60% 78% / cover no-repeat;
+      animation: heroZoom 24s ease-in-out infinite alternate;
     }
 
     @keyframes heroZoom {
-      from { transform: scale(1.0); background-position: 62% 45%; }
-      to   { transform: scale(1.04); background-position: 58% 40%; }
+      from { background-position: 60% 78%; }
+      to   { background-position: 55% 72%; }
     }
+      to   { transform: scale(1.12); }
     }
 
     .hero-overlay {
@@ -130,7 +130,7 @@
     }
 
     .hero-headline {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.8rem, 7vw, 6rem);
       font-weight: 700;
       color: var(--white);
@@ -212,7 +212,7 @@
     }
 
     .section-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       line-height: 1.2;
@@ -265,7 +265,7 @@
     .founder-text .section-title { color: var(--white); }
 
     .founder-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 2rem;
       font-weight: 600;
       color: var(--gold2);
@@ -298,7 +298,7 @@
     }
 
     .founder-quote p {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 1.12rem;
       color: var(--gold2);
@@ -371,7 +371,7 @@
     }
 
     .company-info h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--navy);
@@ -479,7 +479,7 @@
     }
 
     .slide-caption p {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 0.9rem;
       color: var(--gold2);
@@ -505,7 +505,7 @@
     .philosophy-inner .section-title { margin: 0 auto; }
 
     .phil-quote {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.6rem, 3vw, 2.4rem);
       font-style: italic;
       color: var(--navy);
@@ -530,7 +530,7 @@
     }
 
     .footer-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--gold);
@@ -684,7 +684,7 @@
 
   <!-- GUZHENG AUDIO: muted autoplay always works; we unmute on scroll -->
   <audio id="guzheng" autoplay muted loop preload="auto">
-    <source src="./assets/guzheng.mp3" type="audio/mpeg" />
+    <source src="https://archive.org/download/beautiful-chinese-music-bamboo-flute-guzheng-chinese-instrumental-music-for-learning-sleep/Beautiful%20Chinese%20Music%20Bamboo%20Flute-Guzheng%20Chinese%20Instrumental%20Music%20for%20Learning%20%26%20Sleep.mp3" type="audio/mpeg" />
   </audio>
 
   <!-- ANTIQUES -->
@@ -790,7 +790,6 @@
       entries.forEach(e => {
         if (e.isIntersecting) {
           audio.muted = false;
-          audio.play().catch(() => {});
           fadeTo(0.42, 2000);
         } else {
           fadeTo(0, 1500);
